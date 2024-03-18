@@ -31,17 +31,65 @@ class Deck:
         for rank in Card.RANKS:
             for suit in Card.SUITS:
                 cards.append(Card(suit=suit, rank=rank))
+        cards = tuple(cards)
         self._cards = cards
 
+    def shuffle(self):
+        import random
+        cards = list(self.cards)
+        random.shuffle(cards)
+        self._cards = tuple(cards)
     @property
     def cards(self):
         return self._cards
 
+    def __str__(self):
+        return str(self.cards)
+
+class PokerHand:
+    def __init__(self, deck):
+        hand = []
+        for i in range(5):
+            hand.append(deck.cards[i])
+        self._hand = hand
+
+    @property
+    def hand(self):
+        return self._hand
 
 
-card = Card("♣", "A")
-print(card)
-card2 = Card("♦", "10")
-print(card2)
-card3 = Card(rank="K", suit="♠")
-print(card3)
+    def __str__(self):
+        return str(self.hand)
+
+    @property
+    def is_flush(self):
+        suit = self.hand[0].suit
+        for i in range(1,5):
+            if self.hand[i].suit != suit:
+                return False
+        return True
+
+
+# calculate the probability of having a flush for 100
+i = 0
+flushes = 0
+while True:
+    i += 1
+    deck = Deck()
+    deck.shuffle()
+    hand = PokerHand(deck)
+    if hand.is_flush:
+        flushes += 1
+        print("Found a flush:")
+        print(hand)
+        if flushes == 100:
+            break
+
+prob = flushes / i * 100
+print(f"Probability of having a flush in a poker hand: {prob}%")
+
+
+
+
+
+
