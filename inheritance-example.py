@@ -34,13 +34,15 @@ class ColorPoint(Point):
     def __str__(self):
         return f"{self.color}<{self.x}, {self.y}>"
 
+if __name__ == "__main__"
+# we added this if to not show all the below lines when importing into advanced point
+
 ColorPoint.add_extra_color("orange")
 red_point = ColorPoint(10, 10, "red")
 orange_point = ColorPoint(20, 20, "orange")
 red_point.x = 30
 #print(f"{red_point} has distance to origin = {red_point.distance_origin()}") #before it was property
 print(f"{red_point} has distance to origin = {red_point.distance_origin}" #after it was property
-
 
 
 #lets do 5 random color points
