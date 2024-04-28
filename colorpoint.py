@@ -16,12 +16,12 @@ class ColorPoint(Point):
         else:
             raise Exception(f"This is an unsupported color. Allowed colors are: {self.COLORS}")
 
-    @classmethod
+    @classmethod 
     def add_extra_color(cls, color):
         """
         Add a new valid color to the list
         :param color: the name of the color to add
-        """
+        """5
         cls.COLORS.append(color)
 
     @property
