@@ -63,7 +63,6 @@ class PokerHand:
     def hand(self):
         return self._hand
 
-
     def __str__(self):
         return str(self.hand)
 
@@ -172,14 +171,14 @@ class PokerHand:
     def is_straight_flush(self):
         return self.is_straight and self.is_flush
 
-    #do a bicycle property
-    @property
-    def if_bicycle_straight(self): # A, 2, 3, 4, 5
-        original_hand = self.hand.copy()
-        self.hand.sort()
-        if self.hand[0].rank == "2" and self.hand[1].rank == "3" and self.hand[2].rank == "4" and self.hand[3].rank == "5" and self.hand[4].rank == "A":
-            self._hand = original_hand
-            return True
+    # Do a bicycle property
+    # @property
+    # def if_bicycle_straight(self): # A, 2, 3, 4, 5
+    #     original_hand = self.hand.copy()
+    #     self.hand.sort()
+    #     if self.hand[0].rank == "2" and self.hand[1].rank == "3" and self.hand[2].rank == "4" and self.hand[3].rank == "5" and self.hand[4].rank == "A":
+    #         self._hand = original_hand
+    #         return True
 
 # pairs = 0
 # while True:
@@ -192,19 +191,36 @@ class PokerHand:
 #         if pairs == 10:
 #             break
 
+card = Card("♣", "A")
+print(card)
+card2 = Card("♣", "2")
+print(card2)
+cards_list = [card, card2]
+print(cards_list)
 
-i = 0
-matches = 0
+# deck = Deck()
+# print(deck)
+# deck.append(card)
+# deck.shuffle()
+# print(deck)
+
+# hand = PokerHand(deck)
+# print(f"A random poker hand: {hand}")
+# print(f"Is it a flush? {hand.is_flush}")
+
+
+i = 0 #attempts
+flushes = 0
 while True:
     i += 1
     deck = Deck()
     deck.shuffle()
     hand = PokerHand(deck)
-    if hand.if_bicycle_straight:
-        matches += 1
-        #print("Found a flush:")
+    if hand.if_straight_flush:
         print(hand)
-        if matches == 5:
+        flushes += 1
+        #print("Found a flush:")
+        if flushes == 5:
             break
 
 prob = matches / i * 100

@@ -6,6 +6,7 @@ from classexample import Point
 
 class ColorPoint(Point):
     # this is a class that inherits from Point!
+    # we did inheritance to avoid repeating the same code and to extend
     COLORS = ["red", "green", "blue", "yellow", "purple", "cyan", "black", "white", "celadon", "xanadu"]
     def __init__(self, x, y, color):
       # self.x = x
@@ -21,7 +22,7 @@ class ColorPoint(Point):
         """
         Add a new valid color to the list
         :param color: the name of the color to add
-        """5
+        """
         cls.COLORS.append(color)
 
     @property
@@ -31,6 +32,7 @@ class ColorPoint(Point):
         :return:
         """
         return (self.x ** 2 + self.y ** 2) ** 0.5
+
     def __str__(self):
         return f"{self.color}<{self.x}, {self.y}>"
 
